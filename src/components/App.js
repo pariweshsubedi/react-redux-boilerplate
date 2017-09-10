@@ -19,7 +19,7 @@ export default class App extends React.Component {
 	render(){
 		return (
 			<div>
-				My App Component
+				Posts from top5nepal.com
 				<PostList posts = {this.props.posts} />
 			</div>
 		)

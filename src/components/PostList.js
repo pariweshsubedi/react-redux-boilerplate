@@ -2,32 +2,34 @@ import React from "react";
 
 import Post from "./Post";
 
-export default class PostList extends React.Component {
+class PostList extends React.Component {
+
+	renderPosts(){
+		return this.props.posts.map(function(post){
+			return (
+				<Post id={post.id} slug={post.slug} title={post.title.rendered}>
+					{post.title}
+				</Post>
+			)
+		})
+	}
+
 	render(){
-		if (this.props.posts){
-			if(Object.getOwnPropertyNames(this.props.posts).length === 0){
-				return (<div></div>)
-			}
-			var postNodes = this.props.posts.map(function(post){
-				return (
-					<Post id={post.id} slug={post.slug} title={post.title.rendered}>
-						{post.title}
-					</Post>
-				)
-			})
+		if(this.props.posts.length === 0){
+			return (<div>
+						<h1>
+						Loading posts ... 
+						</h1>
+					</div>)
+		}else{
 			return (
 				<div>
 					<h1>Posts</h1>
-					{postNodes}
+					{this.renderPosts()}
 				</div>
 			)
-		}else{
-			return(
-				<div>
-					<h1>
-					Loading posts ....
-					</h1>
-				</div>)
 		}
 	}
 }
+
+export default PostList

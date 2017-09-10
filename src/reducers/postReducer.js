@@ -1,5 +1,5 @@
 export default function reducer(state ={
-	users: [],
+	posts: [],
 	fetching:false,
 	fetched: false,
 	error: null
